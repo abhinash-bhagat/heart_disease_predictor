@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Heart Disease Predictor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <style>
+    /* CSS code for button */
+    body {
+      /* background-image: url('static\images/project.png'); */
+      /* background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover; */
+      background-image: linear-gradient(to right, rgb(228, 191, 245), rgb(181, 231, 243));
+    }
+
+    /* CSS code for button */
+    .button_css {
+    color: #494949 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid #494949 !important;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    }
+    
+    .button_css:hover {
+    color: #ffffff !important;
+    background: #f6b93b;
+    border-color: #f6b93b !important;
+    transition: all 0.4s ease 0s;
+    }
+    .header{
+      color:#494949;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .header-2{
+      color:#494949;
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+    .header-3{
+      color:#494949;
+      text-align: center;
+      margin-top: -5px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      font-size: larger;
+    }
+    .form{
+      margin-top: -100px;
+    }
+    .btn{
+      margin-top: 20px;
+      background-color: green;
+      border: #f6b93b;
+    }
+    input{
+      padding: 5px 5px;
+      margin: 10px 10px;
+    }
+    .answer{
+      margin-top: 30px;
+      color: #494949;
+    }
+    .page-footer {
+  padding-top: 20px;
+  color: #fff;
+  background-color: #2d0038;
+}
+
+.page-footer .footer-copyright {
+  overflow: hidden;
+  min-height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px 0px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(51, 51, 51, 0.08);
+}
+.orange-text{
+  color: #f4dbff;
+  text-decoration: none;
+}
+  </style>
+
+</head>
+
+<body>
+  <h1 class="header" alig>Predict if something's wrong with your heart</h1>
+  <div class="row center">
+    <h6 class="header-2">A Machine-Learning Model designed to predict the complexities with your heart.</h6>
+  </div>
+ <div class="login">
+	
+    <!-- Get input for the prediction of the  heart disease -->
+    <center>
+         <br>
+            <br>
+               <br>
+                  <br>
+    <form class="form" action="{{ url_for('predict')}}"method="post">
+       
+          <br>
+            <br>
+
+        <h1 class="header-3">Enter the value of heart features.</h1>
+        
+    	<input type="text" name="age" placeholder="age" required="required" />
+        <input type="text" name="trestbps" placeholder="trestbps" required="required" />
+		<input type="text" name="chol" placeholder="chol" required="required" />
+        <input type="text" name="thalach" placeholder="thalach" required="required" />
+            <input type="text" name="oldpeak" placeholder="oldpeak" required="required" />
+		
+        
+
+		<br>
+    	<input type="text" name="sex_0" placeholder="sex_0" required="required" />
+        <input type="text" name="sex_1" placeholder="sex_1" required="required" />
+		<input type="text" name="cp_0" placeholder="cp_0" required="required" />
+        <input type="text" name=" cp_1" placeholder=" cp_1" required="required" />
+            <input type="text" name="cp_2" placeholder="cp_2" required="required" />
+    	
+        
+		
+		<br>
+    	<input type="text" name="cp_3" placeholder=" cp_3" required="required" />
+        <input type="text" name="fbs_0" placeholder="fbs_0" required="required" />
+        <input type="text" name="fbs_01" placeholder="fbs_1" required="required" />
+		<input type="text" name="restecg_0" placeholder="restecg_0" required="required" />
+        <input type="text" name="restecg_1" placeholder="restecg_1" required="required" />
+            
+    	
+        
+		
+    	<br>
+    	<input type="text" name="restecg_2" placeholder="restecg_2" required="required" />
+        <input type="text" name="exang_0" placeholder="exang_0" required="required" />
+        <input type="text" name="exang_1" placeholder="exang_1" required="required" />
+		<input type="text" name=" slope_0" placeholder=" slope_0" required="required" />
+        <input type="text" name=" slope_1" placeholder="slope_1" required="required" />
+   
+    	
+        
+			<br>
+
+
+      
+      <input type="text" name="  slope_2" placeholder=" slope_2" required="required" />
+        <input type="text" name=" ca_0" placeholder=" ca_0" required="required" />
+        <input type="text" name="ca_1" placeholder="ca_1" required="required" />
+    <input type="text" name="ca_2" placeholder="ca_2" required="required" />
+        <input type="text" name="ca_3" placeholder="ca_3" required="required" />
+        
+      
+        
+      <br>
+      <input type="text" name="ca_4" placeholder="ca_4" required="required" />
+        <input type="text" name=" thal_0" placeholder="thal_0" required="required" />
+        <input type="text" name=" thal_1" placeholder="thal_1" required="required" />
+    <input type="text" name="thal_2" placeholder="thal_2" required="required" />
+        <input type="text" name="thal_3" placeholder="thal_3" required="required" />
+      <br>
+        <div>
+          <button type="submit" class="btn btn-primary btn-block btn-large"><strong>Predict</strong></button>
+        </div>
+    </form>
+    <!-- Show predicted output using ML model --> 
+   <div>
+    <center>
+<h1 class="answer">{{ prediction_text }}</h1>
+    </center>
+</div>
+    </center>
+    <footer class="page-footer orange">
+      <div class="container">
+        <div class="row">
+          <div class="col l12 s12">
+            <h5 class="white-text">Project Introduction</h5>
+            <p class="grey-text text-lighten-4">This project is created using the Logistic Regression model to classify wheather a patient has heart disease or not. It requires some medical features/attributes as an input to give the output based on the feeded input. If all the inputs are given coorectly. It gives the result with the accuracy of 88%.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          <script>document.write(new Date().getFullYear())</script> &copy; Created by <a class="orange-text text-lighten-3" href="https://abhinashbhagat.com.np">Abhinash</a>
+        </div>
+      </div>
+    </footer>
+
+ </div>
+
+</body>
+</html>
